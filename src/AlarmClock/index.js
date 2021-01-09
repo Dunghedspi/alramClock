@@ -33,7 +33,7 @@ const toggleClassActive = (event) => {
 
 const getFrequencyText = function(frequency) {
     var days;
-    days = ['Mo', 'Tue', 'We', 'Th', 'Fr', 'Sa', 'Su'].filter(function(element, index) {
+    days = ['Su', 'Mo', 'Tue', 'We', 'Th', 'Fr', 'Sa'].filter(function(element, index) {
       return frequency.findIndex(item => item===index)!==-1;
     });
     if (days.length === 7) {
@@ -67,11 +67,10 @@ const toggleSwitch = (event, item, index) => {
 
 const startTimeOut = (item)=>{
   const alarm = new Date();
-  console.log(item.frequency)
-  const isToday = item.frequency.findIndex(item => item+1 === alarm.getDay());
-  var alarmTime = new Date(alarm.getUTCFullYear(), alarm.getUTCMonth(), alarm.getUTCDate(), item.hours, item.minutes, 0);
+  const isToday = item.frequency.findIndex(item => item === alarm.getDay());
+  var alarmTime = new Date(alarm.getFullYear(), alarm.getMonth(), alarm.getDate(), item.hours, item.minutes, 0);
+  console.log(alarmTime);
   var duration = alarmTime.getTime() - (new Date()).getTime();
-  console.log(isToday, duration);
   if(isToday !== -1 && duration > 0){
     return setTimeout(startSound, duration);
   }
@@ -198,6 +197,9 @@ const AlarmClock = () => {
             WHEN?
           </div>
           <div className="days">
+          <div className="day free" onClick={(event)=>toggleClassActive(event)}>
+              Su
+            </div>
             <div className="day" onClick={(event)=>toggleClassActive(event)}>
               Mo
             </div>
@@ -215,9 +217,6 @@ const AlarmClock = () => {
             </div>
             <div className="day free" onClick={(event)=>toggleClassActive(event)} >
               Sa
-            </div>
-            <div className="day free" onClick={(event)=>toggleClassActive(event)}>
-              Su
             </div>
           </div>
         </div>
