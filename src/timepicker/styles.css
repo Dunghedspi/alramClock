@@ -1,0 +1,40 @@
+div.root{
+    margin: 10px 0;
+}
+div.container-canvas{
+    position: fixed;
+    width: 100%;
+    min-height: 60vh;
+    background-color: #333131;
+    opacity: 1;
+    z-index: 1000;
+    display: none;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+}
+input#time{
+    padding: 10px 10px;
+    width: 70%;
+    cursor: pointer;
+}
+div.canvas-input{
+ position: relative;  
+}
+img#clock{
+    position: absolute;
+    left: 100px;
+    top: 6px;
+    cursor: pointer;
+}
+button.btn-hidden{
+    min-width: 100px;
+    min-width: 50px;
+    padding: 10px 30px;
+}
+div.center{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
